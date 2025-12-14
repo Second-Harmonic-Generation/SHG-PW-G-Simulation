@@ -224,15 +224,15 @@ tpf = '50'
 !------------------------------------  temperature 
 
 !------------------------------------------------ Heat Equation Files
-filenameTt = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Tt.plt'
+filenameTt = 'T_t.plt'
 open(1,file=filenameTt)
 !write(1,'(/,a,/)')    ' variables=         "t"                             "temperature"'
 
-filenameTr = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Tr.plt'
+filenameTr = 'T_r.plt'
 open(2,file=filenameTr)
 !write(2,'(/,a,/)')    ' variables=         "r"                             "temperature"'
 
-filenameTz = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Tz.plt'
+filenameTz = 'T_z.plt'
 open(3,file=filenameTz)
 !write(3,'(/,a,/)')    ' variables=         "z"                             "temperature"' 
 
@@ -242,15 +242,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------------------------------------ Phase Equation Files
-filenamePt = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Pt.plt'
+filenamePt = 'p_t.plt'
 open(4,file=filenamePt)
 !write(4,'(/,a,/)')    ' variables=         "t"          "deltaphase_real"      "deltaphase_imaginary"'
 
-filenamePr = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Pr.plt'
+filenamePr = 'p_r.plt'
 open(5,file=filenamePr)
 !write(5,'(/,a,/)')    ' variables=         "r"          "deltaphase_real"      "deltaphase_imaginary"'
 
-filenamePz = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Pz.plt'
+filenamePz = 'p_z.plt'
 open(6,file=filenamePz)
 !write(6,'(/,a,/)')    ' variables=         "z"           "deltaphase_real"      "deltaphase_imaginary"'
 
@@ -260,15 +260,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------------------------------------ Field Equations Files
-filenameElec12t = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec12t.plt'
+filenameElec12t = 'Psi_12_p_t.plt'
 open(7,file=filenameElec12t)
 !write(7,'(/,a,/)')    ' variables =     "t"                              "Elec1 ** 2"'
 
-filenameElec12r = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec12r.plt'
+filenameElec12r = 'Psi_12_p_r.plt'
 open(8,file=filenameElec12r)
 !write(8,'(/,a,/)')    ' variables =     "r"                              "Elec1 ** 2"'
 
-filenameElec12z = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec12z.plt'
+filenameElec12z = 'Psi_12_p_z.plt'
 open(9,file=filenameElec12z)
 !write(9,'(/,a,/)')    ' variables =     "z"                              "Elec1 ** 2"'
 
@@ -279,15 +279,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------
-filenameElec22t = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec22t.plt'
+filenameElec22t = 'Psi_22_p_t.plt'
 open(10,file=filenameElec22t)
 !write(10,'(/,a,/)')    ' variables =     "t"                              "Elec2 ** 2"'
 
-filenameElec22r = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec22r.plt'
+filenameElec22r = 'Psi_22_p_r.plt'
 open(11,file=filenameElec22r)
 !write(11,'(/,a,/)')    ' variables =     "r"                              "Elec2 ** 2"'
 
-filenameElec22z = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec22z.plt'
+filenameElec22z = 'Psi_22_p_z.plt'
 open(12,file=filenameElec22z)
 !write(12,'(/,a,/)')    ' variables =     "z"                              "Elec2 ** 2"'
 
