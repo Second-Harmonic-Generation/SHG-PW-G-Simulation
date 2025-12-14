@@ -3,16 +3,16 @@
 !     But it may appears cluttered on GitHub due to formatting differences.
 
 
-!            **********************************************************************************
-!            *                                                                                *
-!            * File name:                                                                     *
-!            *     Code_SHG-PW-G-Simulation.F90                                                *
-!            *                                                                                *
-!            * This Fortran code models pulsed wave Gaussian Second Harmonic Generation        *
-!            * using five coupled equations (Heat-equation & Phase-equation & Fields-equations)*
-!            * solved by Finite Difference Method.                                            *
-!            *                                                                                *
-!            **********************************************************************************
+!            ************************************************************************************
+!            *                                                                                  *
+!            * File name:                                                                       *
+!            *     Code_SHG-PW-G-Simulation.F90                                                 *
+!            *                                                                                  *
+!            * This Fortran code models pulsed wave Gaussian Second Harmonic Generation         *
+!            * using five coupled equations (Heat-equation & Phase-equation & Fields-equations) *
+!            * solved by Finite Difference Method.                                              *
+!            *                                                                                  *
+!            ************************************************************************************
 
 program Coupled_G_PW
 
