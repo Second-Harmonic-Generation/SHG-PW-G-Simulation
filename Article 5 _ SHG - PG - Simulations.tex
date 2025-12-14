@@ -1,0 +1,349 @@
+\documentclass[review]{elsarticle}
+
+\usepackage{lineno,hyperref}
+\usepackage{amsmath}
+\modulolinenumbers[5]
+% \journal{Journal of \LaTeX\ Templates}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+% Elsevier bibliography styles
+%%%%%%%%%%%%%%%%%%%%%%%
+% To change the style, put a % in front of the second line of the current style and
+% remove the % from the second line of the style you would like to use.
+%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Numbered
+%\bibliographystyle{model1-num-names}
+
+%% Numbered without titles
+%\bibliographystyle{model1a-num-names}
+
+%% Harvard
+%\bibliographystyle{model2-names.bst}\biboptions{authoryear}
+
+%% Vancouver numbered
+%\usepackage{numcompress}\bibliographystyle{model3-num-names}
+
+%% Vancouver name/year
+%\usepackage{numcompress}\bibliographystyle{model4-names}\biboptions{authoryear}
+
+%% APA style
+%\bibliographystyle{model5-names}\biboptions{authoryear}
+
+%% AMA style
+%\usepackage{numcompress}\bibliographystyle{model6-num-names}
+
+%% `Elsevier LaTeX' style
+\bibliographystyle{elsarticle-num}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\begin{frontmatter}
+
+    \title{The efficiency changes of pulsed Gaussian second harmonic generation in KTP crystal: investigating the influences of pulse energy, laser spot size, cooling temperature by emphasizing the interaction length scale}
+    % \tnotetext[mytitlenote]{Fully documented templates are available in the elsarticle package on \href{http://www.ctan.org/tex-archive/macros/latex/contrib/elsarticle}{CTAN}.}
+
+    %% Group authors per affiliation:
+    \author[first]{Mostafa M. Rezaee}
+    \author[second]{Mohammad Sabaeian\corref{*}}
+    \cortext[*]{Corresponding author}
+    \ead{sabaeian@scu.ac.ir}
+    \author[third]{Alireza Motazedian}
+    \author[fourth]{Fatemeh Sedaghat Jalil-Abadi}
+    \author[fifth]{Mohammad Ghadri}
+
+
+    \address[first]{Data Science Program, Bowling Green State University, Bowling Green, OH, US.}
+    \address[second]{Department of Physics, Shahid Chamran University of Ahvaz, Ahvaz, Khuzestan, Iran.}
+    \address[third]{Department of Physics, University of New Hampshire, NH, US.}
+    \address[fourth]{Department of Energy Engineering and Physics, Amirkabir University of Technology, Tehran, Iran.}
+    \address[fifth]{MIAE Department, Concordia University, Montreal, QC, CA.}
+
+
+    % \address{Radarweg 29, Amsterdam}
+    % \fntext[myfootnote]{Since 1880.}
+
+    %% or include affiliations in footnotes:
+    % \author[mymainaddress,mysecondaryaddress]{Elsevier Inc}
+    % \ead[url]{www.elsevier.com}////////////////
+
+    \begin{abstract}
+        We examine how second-harmonic generation (SHG) efficiency varies with pulse energy in a type II SHG process using a KTP crystal end-pumped by a repetitively pulsed Gaussian beam. An optimized numerical solution captures how pulse energy, laser spot size, and cooling temperature affect SHG efficiency, emphasizing their role in determining the effective interaction length. Realistic cooling mechanisms—conduction, convection, and radiation—were incorporated to obtain accurate temperature distributions within the crystal. The thermally induced phase mismatch (TIPM) was evaluated using the thermal dispersion relations of the ordinary and extraordinary refractive indices of KTP in a type II configuration. The thermal dispersion of refractive indices and the resulting TIPM modify the interaction length in a sinusoidal-like manner, thereby influencing the SHG efficiency. As the pulse energy incident on the crystal increases, the SHG efficiency approaches a steady-state value with fluctuations. These fluctuations arise because higher pulse energy initially enhances SHG efficiency, but the associated temperature rise in the crystal induces phase mismatch, reducing efficiency and driving partial reconversion of the SHW to the FW. Because the absorption coefficient of the FW is one eighth that of the SHW, the crystal cools and the phase mismatch decreases, allowing SHG efficiency to recover a second time. This cyclical behavior continues, with the efficiency reaching nearly $70\%$ at the local maxima. A numerical procedure was developed to address this problem, enabling these computations to be performed on standard personal computers.
+
+    \end{abstract}
+
+    \begin{keyword}
+        Optimization
+        \sep Pulsed Gaussian laser
+        \sep Second harmonic generation
+        \sep Pulse energy
+        \sep Laser spot size
+        \sep Interaction length
+        \sep Cooling temperature.
+    \end{keyword}
+\end{frontmatter}
+
+\linenumbers
+
+\section{Introduction}
+In nonlinear optics, frequency conversion techniques represent a fundamental approach for generating higher-order harmonic waves \cite{konforty2025second, huang2012new_1}, building on the seminal works of Armstrong \cite{armstrong1962interactions_2}, Bloembergen \cite{bloembergen1962light_3,bloembergen1969total_5}, and Maker \cite{maker1962effects_4}. To generate new frequencies, an intense laser beam must be directed onto a nonlinear crystal, which leads to thermal effects due to energy absorption as the fundamental wave (FW) and second-harmonic wave (SHW) propagate through the medium. As a result of this absorption and the associated thermal effects, the efficiency of second-harmonic generation (SHG) decreases \cite{chen2023382, armstrong1962interactions_2}.
+
+Green light lasers with wavelength $532\,\mathrm{nm}$ are of great interest with widespread applications in medicine \cite{liu2023high, teng2024generation} and the telecommunication industry, such as green light laser therapy \cite{nawrat2009review_6}, underwater communication and ocean exploration \cite{yuan2025laser, xu2005110_7,wiener1980role_8}, and spectroscopy \cite{lu2000raman_9}. In this respect, high-quality beams and high efficiency are of great importance \cite{liu2023high}. Potassium titanyl phosphate (KTiOPO$_4$) is one of the most widely used nonlinear crystals for frequency conversion of a Nd:YAG laser operating at $1064\,\mathrm{nm}$ into green light through second-harmonic generation (SHG). It is also called KTP which has unique properties with a large angular acceptance angle and relatively high damage threshold \cite{zhou2023hydrothermal, bolt1993single_10}. This positive biaxial crystal \cite{yao1984calculations_11} is quite appropriate for Type II doubling at $1064\,\mathrm{nm}$ \cite{trinquet2024second, zhang2023second}.
+
+A theoretical model of SHG in a single-pass cavity with Gaussian continuous-wave pumping was presented in \cite{sabaeian2010investigation_12,kretzschmar20172}, where both heat and phase equations were coupled with the field equations. This model was experimentally validated, demonstrating an increase in SHG efficiency when the thermal effects were taken into account \cite{regelskis2012efficient_13}. Building on this modeling approach, a three-dimensional depleted numerical model was developed to solve the coupled SHG equations under Gaussian continuous-wave pumping \cite{sabaeian2014pulsed_14}, for Gaussian pulsed wave \cite{sabaeian2014pulsed_15}, and for Bessel-Gauss pulsed wave \cite{sabaeian2014pulsed_16}. The study aimed to demonstrate the conversion of the fundamental wave (FW) to the second-harmonic wave (SHW) and to estimate the corresponding SHG efficiency. In \cite{sabaeian2014heat_17}, a double-pass cavity was implemented to enhance SHG efficiency, based on a three-dimensional numerical model for Gaussian continuous-wave pumping. The thermal effect and the influence of heat on the properties of KTP were investigated separately in \cite{rezaee2015complete_18}, in which the spatial and temporal changes of temperature were reported. In \cite{rezaee2015thermally_19}, thermally induced phase mismatch (TIPM) was examined, where dissipated heat in the crystal caused this phenomenon, and its impact on SHG efficiency was demonstrated.
+
+We investigate the effects of pulse energy, spot size, and cooling temperature on the efficiencies of the FW and SHW, with particular attention to variations in the interaction length. Previous studies have emphasized that the interaction length is a key parameter governing SHG efficiency \cite{he2024efficient,hansen2023efficient,ngo2022fibre}, as it defines the characteristic distance over which the fields exchange energy. We examine how the interaction length can be thermally modulated and controlled to achieve desirable outcomes. Its variations follow the temperature distribution, with pulse energy playing the central role in influencing SHG efficiency.
+
+
+\section{Heat-pulsed second harmonic generation coupling}
+
+For the nonlinear KTP crystal under pulsed Gaussian laser pumping, the discretized coupled equations of the electric fields are derived and presented as follows \cite{sabaeian2014pulsed_15,sabaeian2014pulsed_16}, based on extensive previous work in this field \cite{sabaeian2014pulsed_16,sabaeian2014heat_17,rezaee2015complete_18,rezaee2015thermally_19}:
+
+\begin{equation}
+    \frac{n_{1}}{c} \frac{d \psi_{1}}{d t}+\frac{d \psi_{1}}{d z}-\frac{i c}{2 n_{1} \omega} \frac{1}{r} \frac{d \psi_{1}}{d r}-\frac{i c}{2 n_{1} \omega} \frac{d^{2} \psi_{1}}{d r^{2}}+\frac{\gamma_{1}}{2} \psi_{1}=\frac{i}{L} \psi_{2}^{*} \psi_{3} e^{-i \Delta \phi}
+    \label{eq:1}
+\end{equation}
+
+\begin{equation}
+    \frac{n_{2}}{c} \frac{d \psi_{2}}{d t}+\frac{d \psi_{2}}{d z}-\frac{i c}{2 n_{2} \omega} \frac{1}{r} \frac{d \psi_{2}}{d r}-\frac{i c}{2 n_{2} \omega} \frac{d^{2} \psi_{2}}{d r^{2}}+\frac{\gamma_{2}}{2} \psi_{2}=\frac{i}{L} \psi_{1}^{*} \psi_{3} e^{-i \Delta \phi}
+    \label{eq:2}
+\end{equation}
+
+\begin{equation}
+    \frac{n_{3}}{c} \frac{d \psi_{3}}{d t}+\frac{d \psi_{3}}{d z}-\frac{i c}{4 n_{3} \omega} \frac{1}{r} \frac{d \psi_{3}}{d r}-\frac{i c}{4 n_{3} \omega} \frac{d^{2} \psi_{3}}{d r^{2}}+\frac{\gamma_{3}}{2} \psi_{3}=\frac{i}{L} \psi_{1} \psi_{2} e^{i \Delta \phi}
+    \label{eq:3}
+\end{equation}
+
+where
+
+\begin{eqnarray}
+    \psi_{1}=\frac{E_{1}}{\sqrt{P_{1} / 2 n_{1} c \varepsilon_{0} \pi \omega_{f}^{2}}} \Rightarrow E_{1}=\sqrt{\frac{P_{1}}{2 n_{1} c \varepsilon_{0} \pi \omega_{f}^{2}}} \psi_{1} \Rightarrow\left|\psi_{1}\right|^{2}
+    \\
+    \nonumber
+    =\frac{2 n_{1} c \varepsilon_{0}\left|E_{1}\right|^{2}}{P_{1} / \pi \omega_{f}^{2}}=\frac{I_{1}}{I_{1}(0)}
+    \label{eq:4}
+\end{eqnarray}
+
+\begin{eqnarray}
+    \psi_{2}=\frac{E_{2}}{\sqrt{P_{2} / 2 n_{2} c \varepsilon_{0} \pi \omega_{f}^{2}}} \Rightarrow E_{2}=\sqrt{\frac{P_{2}}{2 n_{2} c \varepsilon_{0} \pi \omega_{f}^{2}}} \psi_{2} \Rightarrow\left|\psi_{2}\right|^{2}
+    \\
+    \nonumber
+    =\frac{2 n_{2} c \varepsilon_{0}\left|E_{2}\right|^{2}}{P_{2} / \pi \omega_{f}^{2}}=\frac{I_{2}}{I_{2}(0)}
+    \label{eq:5}
+\end{eqnarray}
+
+\begin{eqnarray}
+    \psi_{3}=\frac{E_{3}}{\sqrt{P_{3} / 2 n_{3} c \varepsilon_{0} \pi \omega_{f}^{2}}} \Rightarrow E_{3}=\sqrt{\frac{P_{3}}{2 n_{3} c \varepsilon_{0} \pi \omega_{f}^{2}}} \psi_{3} \Rightarrow\left|\psi_{3}\right|^{2}
+    \\
+    \nonumber
+    =\frac{2 n_{3} c \varepsilon_{0}\left|E_{3}\right|^{2}}{P_{3} / \pi \omega_{f}^{2}}=\frac{I_{3}}{I_{1}(0)+I_{2}(0)}
+    \label{eq:6}
+\end{eqnarray}
+
+Additionally, $L$ denotes the interaction length, defined as the characteristic distance over which the fields exchange energy:
+
+\begin{equation}
+    \text {Interaction\;length}=L=\left(\frac{n_{1} n_{2} n_{3} c^{3} \varepsilon_{0} \pi \omega_{f}^{2}}{4 P \omega^{2} d_{e f f}^{2}}\right)^{\frac{1}{2}}
+    \label{eq:7}
+\end{equation}
+
+In the above equations, $n_1$, $n_2$, and $n_3$ are the refractive indices for the fundamental waves and the SHW, respectively, just as $E_1$, $E_2$, and $E_3$ represent the amplitudes of the electric fields associated with the FWs and SHW. Similarly, $\gamma_1$, $\gamma_2$, and $\gamma_3$ denote the absorption coefficients of the aforementioned waves. $P_1$ and $P_2$ correspond to the powers of the FWs, while $P_3$ is related to the SHW. Furthermore, $c$ is the speed of light, $\omega_f$ is the beam spot size, and $\varepsilon_0$ is the permittivity of free space. $d_{\mathrm{eff}}$ is a property of the nonlinear crystal that appears in the interaction length equation. Finally, $\Delta \phi = \Delta k z$ is identified as the phase-mismatch equation.
+
+
+Since the fundamental waves (FWs) have the same frequency, their powers are equal, and both are vertically polarized. Hence, on the $z=0$ face, $P_1 = P_2 = P$, and $I_i(0)$ $(i=1,2,3)$ denotes the intensities of the waves at $z=0$, while $I_i$ represents the intensity of the corresponding waves at each point within the crystal. The quantity $|\psi_i|^{2}$ is an indicator of efficiency, defined as the ratio of the wave intensity at a given point in the crystal to the wave intensity at the entrance face. As can be seen in \cite{rezaee2015thermally_19}, the phase variation is completely a spatiotemporal-dependent quantity, and it has been identified with:
+
+\begin{equation}
+    \frac{d \varphi}{d z}=\frac{2 \pi}{\lambda_{1}}\left[\Delta n^{o, \omega}(T)+\Delta n^{e, \omega}(T)-2 \Delta n^{e, 2 \omega}(T)\right]
+    \label{eq:8}
+\end{equation}
+
+where $n^{o,\omega}(T)$ and $n^{e,\omega}(T)$ are the temperature-dependent ordinary and extraordinary refractive indices at FW frequency, respectively, and $n^{e, 2 \omega}(T)$ is the extraordinary refractive index at SHW frequency, $T$ is the temperature, and $\lambda_1=2 \pi c / \omega$ is the fundamental wavelength. The heat equation, derived and localized in \cite{rezaee2015complete_18} as the fifth coupled equation in this approach, is field-dependent. The heat sources are the fundamental waves (FWs) and the second-harmonic wave (SHW) themselves:
+
+\begin{equation}
+    \rho c \frac{\partial T}{\partial t}-\nabla K_{T} \cdot \nabla T-K_{T} \nabla^{2} T=\gamma_{1} \psi_{1}+\gamma_{2} \psi_{2}+\gamma_{3} \psi_{3}
+    \label{eq:9}
+\end{equation}
+
+where $T$ is temperature, $\rho$ is mass density, $c$ is specific heat, and $K(T)$ is the temperature-dependent thermal conductivity. Thus, according to Eq.~(\ref{eq:7}), the interaction length—appearing in the denominator of the field source terms—is a temperature-dependent quantity due to the presence of the refractive indices.
+
+The field, phase, and heat equations—Eqs.~(\ref{eq:1}) to (\ref{eq:3}), (\ref{eq:8}), and (\ref{eq:9})—are directly and indirectly coupled, and cannot be solved analytically. We employ the Finite Difference Method (FDM) to solve these coupled equations numerically.
+
+
+\section{Results and discussion}
+
+We developed FORTRAN codes based on the Finite Difference Method (FDM) to solve the coupled equations for a KTP crystal under a repetitively pulsed pumping source, running them on a Linux operating system. The FW and SHW specifications, along with the mesh information, are listed in Table~\ref{tab:1}. The meshes were selected to obtain stable and accurate solutions efficiently. All computations were performed on a standard personal computer without requiring high-performance computing resources.
+
+A cylindrical KTP crystal with a radius of $a = 5\,\mathrm{mm}$ and a length of $l = 2\,\mathrm{cm}$ was considered \cite{seidel1997numerical_20}. The lateral surfaces of the crystal were maintained at a constant temperature of $300\,\mathrm{K}$, while the entrance and exit faces were cooled by convection and radiation \cite{sabaeian2010investigation_12,rezaee2015complete_18}. The thermal, optical, and geometrical properties of the nonlinear KTP laser system are listed in Table \ref{tab:2}.
+
+\begin{table}[!htbp]
+    \centering
+    \caption{FW and SHW specifications along with number of meshes used in this work.}
+    \label{tab:1}\vskip .1in
+    \begin{tabular}{|c|c|c|}
+        \hline specification                                 & value                           & Ref.                                               \\
+        \hline Fundamental wavelength                        & $\lambda_{1}=1064 \mathrm{~nm}$ & \cite{sabaeian2010investigation_12}                \\
+        \hline Second harmonic wavelength                    & $\lambda_{2}=532 \mathrm{~nm}$  & $-$                                                \\
+        \hline Pulse duration                                & $t_{p}=50 \mu \mathrm{s}$       & \cite{sabaeian2012analytical_21}                   \\
+        \hline Pulse repetition frequency                    & $f=500 \mathrm{~Hz}$            & \cite{sabaeian2014pulsed_16}                       \\
+        \hline Beam spot size                                & $\omega_{f}=100 \mu \mathrm{m}$ & \cite{sabaeian2014pulsed_16,rezaee2015complete_18} \\
+        \hline Pulse energy                                  & $E=0.09 \mathrm{~J}$            & \cite{sabaeian2014pulsed_16}                       \\
+        \hline Number of steps over time                     & $N_t=2532$                      &                                                    \\
+        \hline Number of steps in the radial direction       & $N_r=120$                       &                                                    \\
+        \hline Number of steps in the longitudinal direction & $N_z=12000$                     &                                                    \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[!htbp]
+    \centering
+    \caption{Thermal and optical properties of KTP.}
+    \label{tab:2}\vskip .1in
+    \begin{tabular}{|c|c|c|}
+        \hline Absorption coefficient at $1064 \mathrm{~nm}$ & $\gamma_{1}=0.5 \mathrm{~m}^{-1}$                                & \cite{perkins198720_22}             \\
+        \hline Absorption coefficient at $532 \mathrm{~nm}$  & $\gamma_{2}=4 \mathrm{~m}^{-1}$                                  & \cite{perkins198720_22}             \\
+        \hline Refractive index (ordinary, $\omega$)         & $n^{o, \omega}=1.8296$                                           & \cite{asaumi1992second_23}          \\
+        \hline Refractive index (extraordinary, $\omega$)    & $n^{e, \omega}=1.7466$                                           & \cite{asaumi1992second_23}          \\
+        \hline Refractive index (extraordinary, $2\omega$)   & $n^{e,2 \omega}=1.7881$                                          & \cite{asaumi1992second_23}          \\
+        \hline Effective nonlinear coefficient               & $d_{\mathrm{eff}}=7.3 \mathrm{pm\,V}^{-1}$                       & \cite{sabaeian2010investigation_12} \\
+        \hline Heat transfer coefficient                     & $h=10 \mathrm{W\,m}^{-2} \mathrm{K}^{-1}$                        & \cite{arlt2001optical_24}           \\
+        \hline Thermal conductivity                          & $K_{0}=13 \mathrm{W\,m}^{-1} \mathrm{K}^{-1}$                    & \cite{arlt2001optical_25}           \\
+        \hline Stefan--Boltzmann constant                    & $\sigma=5.669 \times 10^{-8} \mathrm{W\,m}^{-2} \mathrm{K}^{-4}$ &                                     \\
+        \hline Heat capacity at constant pressure            & $C_{p}=728.016 \mathrm{J\,kg}^{-1} \mathrm{~K}^{-1}$             & \cite{tan2000adiabatic_26}          \\
+        \hline Mass density                                  & $\rho=2945 \mathrm{kg\,m}^{-3}$                                  & \cite{rezaee2015complete_18}        \\
+        \hline Crystal cutting angles                        & $\theta=90^{\circ}$, $\varphi=24.77^{\circ}$                     & \cite{sabaeian2010investigation_12} \\
+        \hline Surface emissivity                            & $\varepsilon=0.9$                                                & \cite{rezaee2015complete_18}        \\
+        \hline
+    \end{tabular}
+\end{table}
+
+We investigate the influence of the interaction length on SHG properties, which plays a significant role in describing this phenomenon. We evaluate the effects of various parameters—pulse energy, laser spot size, pulse repetition rate, and pulse duration—on SHG efficiency to determine optimized values for maximum efficiency.
+
+Since temperature is a time- and space-dependent quantity, the interaction length also changes with variations in time and space. Furthermore, this parameter depends on the pulse energy. In the following, the variations of temperature and interaction length are investigated as functions of energy and time for a pulsed-Gaussian laser with a spot size of $80\,\mu\mathrm{m}$ and a pulse duration of $50\,\mu\mathrm{s}$.
+
+Figures~\ref{fig:1} and~\ref{fig:2} show the temporal dependence of interaction length and temperature. Figure~\ref{fig:1} illustrates that the interaction length increases during pulse irradiation, similar to the temperature behavior shown in Figure~\ref{fig:2}. However, the interaction length decreases during the pulse-off time as the temperature falls. Thus, the fluctuations arise from the pulse duration: the maxima occur at the peak pulse intensity, while the minima appear at the pulse-off time. Both quantities reach steady-state values after 240 pulses, with the interaction length and temperature reaching approximately $2.85\,\mathrm{mm}$ and $350\,\mathrm{K}$, respectively.
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/1.png}
+    \caption{Temporal variations of interaction length at the central point of the exit face.}
+    \label{fig:1}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/2.png}
+    \caption{Temporal variations of temperature for two spot sizes: $80 \mu \mathrm{m}$ (red-solid curve) and $100 \mu \mathrm{m}$ (blue-dashed curve).}
+    \label{fig:2}
+\end{figure}
+
+
+Figures~\ref{fig:3} and~\ref{fig:4} display the changes of interaction length and temperature in the radial direction at the exit face of the crystal. The same qualitative behavior of interaction length and temperature is again observable. In Figure~\ref{fig:3}, the interaction length varies with radius, decreasing from $2.8455\,\mathrm{mm}$ to $2.8430\,\mathrm{mm}$ and leveling off at this value after just less than $0.5\,\mathrm{mm}$ along the radial direction. In Figure~\ref{fig:4}, the thermal gradient is illustrated, and it can be seen that the majority of the temperature gradient is in close proximity to the crystal axis. Additionally, Figure~\ref{fig:3} shows that the interaction-length variations plunge sharply, which causes an undesirable consequence for the efficiency of SHG. Therefore, to achieve an appropriate SHG efficiency, the variation of different quantities along the crystal axis should be controlled and identified.
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/3.png}
+    \caption{The interaction length changes along the radial direction at the exit face.}
+    \label{fig:3}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/4.png}
+    \caption{The temperature changes along radial direction at exit face for four spot sizes: $70 \mu \mathrm{m}$ (solid-black), $80 \mu \mathrm{m}$ (dash-red), $90 \mu \mathrm{m}$ (dash-dot-green), and $100 \mu \mathrm{m}$ (dotted-blue).}
+    \label{fig:4}
+\end{figure}
+
+
+
+Figures~\ref{fig:5} and~\ref{fig:6} reveal the changes in interaction length and temperature along the crystal axis. These changes are oscillatory, because the absorption coefficient is eight times as large for the SHW as for the FWs. Accordingly, the curves of interaction length (Fig.~\ref{fig:5}) and temperature (Fig.~\ref{fig:6}) are harmonized with each other along the crystal axis. This sinusoidal behavior arises from the difference between the interaction length (approximately $3\,\mathrm{mm}$) and the crystal length ($20\,\mathrm{mm}$). A short interaction length relative to the crystal length causes the FWs and the SHW to fluctuate and exchange energy several times while passing through the crystal. A simple division of the crystal length by the interaction length shows that almost seven energy-conversion processes are observable along the crystal axis. Hence, the interaction-length oscillations should be considered a key characteristic for controlling the efficiency of SHG.
+
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/5.png}
+    \caption{The interaction length changes along the crystal axis.}
+    \label{fig:5}
+\end{figure}
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/6.png}
+    \caption{The temperature changes along the crystal axis for two spot sizes: $80 \mu \mathrm{m}$ (solid-red) and $100 \mu \mathrm{m}$ (dash-blue).}
+    \label{fig:6}
+\end{figure}
+
+
+Although the oscillations of the interaction length are relatively small, fundamental changes in SHG efficiency originate from the complete similarity of the spatiotemporal dependence of temperature and interaction length. Figures~\ref{fig:7}--\ref{fig:10} should be considered simultaneously to fully understand this relationship. The program was run 28 times to generate these figures; in each run, the pulse energy was increased slightly to investigate the variation of different quantities with respect to pulse energy. Additional data were obtained near the local extrema to improve accuracy. Figure~\ref{fig:7} shows the temperature changes at a specific point and time as a function of pulse energy. The oscillatory variations of temperature versus pulse energy result in sinusoidal-like changes of the interaction length (Fig.~\ref{fig:8}), with similar behavior for the FWs and SHG efficiency (Figs.~\ref{fig:9} and~\ref{fig:10}, respectively). The strong similarity between the temperature and interaction-length curves indicates that investigating thermal effects provides pathways for controlling SHG efficiency.
+
+
+
+Figures~\ref{fig:7}--\ref{fig:10} show that, with increasing energy, the SHG efficiency rises; however, the crystal temperature simultaneously increases, causing phase mismatch and consequently a decrease in SHG efficiency. As the total amount of absorption is conserved, when the SHG efficiency decreases, the SHW is converted back to the FW. Because the absorption coefficient of the FW is much less than that of the SHW, the crystal cools and the phase mismatch drops; thus, the crystal gains an alternative opportunity to increase the SHG efficiency a second time, and this cycle continues. To be more precise, when the FW keeps moving through the crystal and the FW efficiency is at its maximum, the rate of heat production decreases, and the SHW is generated again.
+
+
+We performed calculations for four different laser spot sizes to obtain more reliable results, with the FW efficiency shown in Figure~\ref{fig:9} and the SHW efficiency in Figure~\ref{fig:10}. At the central point of the exit face, when the FW efficiency is at its highest, the SHW efficiency is at its lowest. The maximum SHW efficiency reaches $70\%$, and both SHW and FW efficiencies fluctuate between approximately $20\%$ and $70\%$. In nonlinear optical phenomena, increases in temperature and the creation of thermal gradients significantly affect the conversion efficiency. An increase in temperature can damage the crystal, and cooling is the primary solution. Thermal gradients also demonstrate their impact on the efficiency of nonlinear-optical phenomena, for which no specified solution has yet been established.
+
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/7.png}
+    \caption{The temperature variations versus pulse energy at the exit face of the crystal after 50 pulses.}
+    \label{fig:7}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/8.png}
+    \caption{The interaction length variations versus pulse energy at the exit face of the crystal after 50 pulses.}
+    \label{fig:8}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/9.png}
+    \caption{The efficiency of FW at the central point of the exit surface of the crystal versus pulse energy for spot sizes $70 \mu \mathrm{m}$ (square-black), $80 \mu \mathrm{m}$ (circle-red), $90 \mu \mathrm{m}$ (upward triangles-green), and $100 \mu \mathrm{m}$ (downward triangles-blue).}
+    \label{fig:9}
+\end{figure}
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/10.png}
+    \caption{The efficiency of SHW at the central point of the exit surface of the crystal versus pulse energy for spot sizes $70 \mu \mathrm{m}$ (square-black), $80 \mu \mathrm{m}$ (circle-red), $90 \mu \mathrm{m}$ (upward triangles-green), and $100 \mu \mathrm{m}$ (downward triangles-blue).}
+    \label{fig:10}
+\end{figure}
+
+
+Figure~\ref{fig:11} displays the SHG efficiency variations versus the lateral-surface temperature. In practice, one effective cooling mechanism is the use of liquid nitrogen. In our case study, the highest temperature was $350\,\mathrm{K}$; therefore, by changing the temperature of the cooling material—which determines the lateral-surface temperature—we investigated the influence of the lateral-surface temperature on SHG efficiency over the range $100$–$350\,\mathrm{K}$. Although keeping the coolant at a lower temperature increases the efficiency, an accurate investigation shows that the change is slight and almost negligible. Thus, one can avoid additional expense and strict crystal-temperature control while ensuring that the efficiency does not fall dramatically. In Figure~\ref{fig:11}, the efficiency is $70\%$ at $100\,\mathrm{K}$ and decreases slightly to \(\approx 69\%\) at \(350\,\mathrm{K}\).
+
+
+\begin{figure}[!htbp]
+    \centering
+    \includegraphics[width = 4 in ]{Figures/11.png}
+    \caption{The efficiency of SHG versus the lateral surface temperature (the temperature of the cooling material).}
+    \label{fig:11}
+\end{figure}
+
+
+\section{Conclusion}
+We investigated type-II pulsed SHG in KTP by solving the coupled field-\allowbreak phase-\allowbreak heat equations with a finite-difference formulation, using meshes that produced stable, accurate solutions on a standard personal computer (no high-performance hardware). We analyzed how pulse energy, beam spot size, and lateral-surface temperature govern efficiency by tracking the spatiotemporal temperature and the interaction length across the crystal.
+
+The results showed that efficiency followed interaction-length dynamics driven by intra-cycle heating and cooling: it increased with pulse energy to local maxima, then decreased as thermally induced phase mismatch grew, and recovered during the pulse-off time. Radially, the interaction length fell steeply from the axis, reached \(\approx 2.8426\,\mathrm{mm}\) at \(r\!\approx\!0.5\,\mathrm{mm}\), and then leveled off, with sinusoidal-like variation near the axis; across energy scans, FW and SHG efficiencies were anti-correlated, with SHG peaks near \(70\%\) coinciding with FW minima. The absorption at \(532\,\mathrm{nm}\) (\(\gamma_2=4~\mathrm{m}^{-1}\)) exceeded that at \(1064\,\mathrm{nm}\) (\(\gamma_1=0.5~\mathrm{m}^{-1}\)), steepening the temperature field and limiting conversion through phase mismatch. Varying the lateral-surface temperature from \(100\) to \(350\,\mathrm{K}\) changed the peak efficiency only slightly (\(\sim70\%\) at \(100\,\mathrm{K}\) to \(\approx 69\%\) at \(350\,\mathrm{K}\)), indicating that aggressive cryogenic control is not essential under the present conditions.
+
+These findings establish the interaction length as a practical lever for efficiency control. The framework enables systematic sweeps over pulse energy, spot size, repetition rate, and pulse duration to identify stable, high-efficiency operating windows and guide parameter selection toward maximum SHG efficiency under realistic thermal conditions.
+
+
+\section{Acknowledgement}
+M. M. Rezaee, M. Sabaeian, A. Motazedian, and F. Sedaghat Jalil-Abadi would like to thank Shahid Chamran University of Ahvaz for supporting this work.
+
+% \section*{References}
+
+\bibliography{mybibfile}
+
+\end{document}
