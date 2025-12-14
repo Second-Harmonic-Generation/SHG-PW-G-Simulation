@@ -1,67 +1,28 @@
+! Note: 
+!     We have aligned the code with VS Code's formatting standards.
+!     But it may appears cluttered on GitHub due to formatting differences.
 
-!            ********************************************************************************
-     
-!            * Dr.Mohammad Sabaeian    , Department of Physics, Shahid Chamran University   * 
 
-!            * Mostafa Mohammad-Rezaee , Department of Physics, Shahid Chamran University   *
-
-!            * Alireza Motazedian      , Department of Physics, Shahid Chamran University   *
-
-!            * Fatemeh Sedaghat        , Department of Physics, Shahid Chamran University   *
-
-!            *                                                                              * 
-
-!            * m_sabaeian@yahoo.com                                                         *
-
-!            * mostafa_mohammadrezaee@yahoo.com                                             *
-
-!            * alireza.motazedian@yahoo.com                                                 *
-
-!            * f.sedaghat2010@yahoo.com                                                     *
-
-!            *                                                                              * 
-
-!            * "5Coupled_G_PW.F90" is a program to solve five coupled equations by FDM.     *
-                     
-!            *			   (Heat-equation & Phase-equation & Fields-equations)      * 
-
-!            *                                                                              * 
-
-!            * originally Written : 17-Apr-2013   by  MS  &  MM  &  AM  &  FS               *
-
-!            *       last revised : 25-Aug-2013   by  MS  &  MM  &  AM  &  FS               *
-
-!            ********************************************************************************
-
-!   Notes    *------------------------------- Notes ----------------------------------------*
-
-!            **    in barname be tori kodnevisi shode ast ke mitavanim 3 barname Heat va    *
-
-!            *    Phase va Field ra betore mojaza dashte bashim banabarin baraye dashtane   * 
- 
-!            *    haryk bayad nekate zir ra reayat konim.                                   *
-
-!            * 1) baraye dashtane barname Heat lazem ast ke cheshme garma va behanjaresh    *
-!            *    ra tarif konim.             
-
-!            * 2) baraye dashtane barname Field lazem ast ke maghadire avaliye zarayebe     *
-!            *    shekast ra vared konim
-
-!            *  Array zamani ra baraye ghesmate Heat-Phase sheet bandi kardim  
-
-!            ** do i=31,nt,(4*inn) !noghteye shoro (31) motenaseb ba meshbandi ast          *
-!                                 !va baraye rasme bishtarin bazde dar noghteye entehaei as.*
-
-!            ********************************************************************************
+!            **********************************************************************************
+!            *                                                                                *
+!            * File name:                                                                     *
+!            *     Code_SHG-PW-G-Simulation.F90                                                *
+!            *                                                                                *
+!            * This Fortran code models pulsed wave Gaussian Second Harmonic Generation        *
+!            * using five coupled equations (Heat-equation & Phase-equation & Fields-equations)*
+!            * solved by Finite Difference Method.                                            *
+!            *                                                                                *
+!            **********************************************************************************
 
 program Coupled_G_PW
 
 implicit none
 
-!**********************************************************************************************************************
+!*********************************************************************************************************************
 !                                       Variables Definition
-!**********************************************************************************************************************
-!-------------------------------------- Common Variables
+!*********************************************************************************************************************
+
+!--------------------------------- common variables
 integer       i            ,j          ,k          ,l                                                                &
              ,nt           ,nr         ,nz         ,Np         ,inn        ,kn                                       &
 	     ,nt1          ,run                                                                                      &
@@ -80,7 +41,7 @@ complex*16    Ii
 
 character*35  freqf      ,Npf        ,tpf        ,EE
 
-!-------------------------------------- Thermal Variables
+!--------------------------------- temperature variables
 real*8        h                                                                                                      &  
              ,T0         ,Cp                                                                                         &
 	     ,roh        ,aa1        ,aa2        ,aa3        ,aa4        ,aa5        ,KT0                            &
@@ -94,7 +55,7 @@ real*8        h                                                                 
 
 character*35  filenameTt   ,filenameTr   ,filenameTz                                                                 &
              ,filenameTempmaxl
-!-------------------------------------- Phase Variables
+!--------------------------------- phase variables
 real*8        phi                                                                                                    &
              ,B1T0         ,B2T0         ,C1T0          ,C2T0         ,B1rT         ,B2rT         ,C1rT              &
 	     ,C2rT                                                                                                   &		 
@@ -120,7 +81,7 @@ complex*8     deltaphase[allocatable](:,:)                                      
 character*35  filenamePt   ,filenamePr   ,filenamePz                                                                 &
              ,filenamePhaseminl
 
-!-------------------------------------- Fields Variables
+!--------------------------------- fields variables
 integer       f            ,ibest
 
 real*8        c                                                                                                      &
@@ -148,9 +109,10 @@ character*35  filenameibestl                                                    
              ,filenamePsi2picksl 
 
 !**********************************************************************************************************************
-!                                       Giving Zero to variables
+!                                    Giving Zero to variables
 !**********************************************************************************************************************
-!-------------------------------------- Giving Zero to Common Variables
+
+!--------------------------------- Giving Zero to common variables
               i = 0            ;j = 0            ;k = 0        ;l = 0               
              nt = 0           ;nr = 0           ;nz = 0       ;Np = 0       ;inn= 0        ;kn = 0                                                  
 	    nt1 = 0           ;run = 0                                                 
@@ -167,7 +129,7 @@ character*35  filenameibestl                                                    
 
              Ii = (0.,0.)  
 
-!-------------------------------------- Giving Zero to Thermal Variables
+!-------------------------------- Giving Zero to temperature variable
               h = 0.                                                                                                                       
              T0 = 0.           ;Cp = 0.                                                    
 	    roh = 0.          ;aa1 = 0.          ;aa2 = 0.      ;aa3 = 0.      ;aa4 = 0.      ;aa5 = 0.      ;KT0 = 0.      
@@ -177,7 +139,7 @@ character*35  filenameibestl                                                    
        epsilong = 0.                                      
       stability = 0.   
 
-!-------------------------------------- Giving Zero to Phase Variables
+!------------------------------- Giving Zero to phase variable
             phi = 0.                                                                                                    
            B1T0 = 0.         ;B2T0 = 0.         ;C1T0 = 0.     ;C2T0 = 0.     ;B1rT = 0.     ;B2rT = 0.     ;C1rT = 0.        
            C2rT = 0.    
@@ -195,7 +157,7 @@ character*35  filenameibestl                                                    
      deltano1rT = 0.   ;deltane1rT = 0.   ;deltane2rT = 0.                                                                   
     deltano1r0T = 0.  ;deltane1r0T = 0.  ;deltane2r0T = 0.                                                    
 
-!------------------------------------------------ Giving Zero to Fields Variables
+!-------------------------------- Giving Zero to field equation variable
               f = 0.        ;ibest = 0.
               c = 0.                                                    
              fi = 0.         
@@ -212,37 +174,54 @@ character*35  filenameibestl                                                    
 !**********************************************************************************************************************
 !                                             Inputs		  
 !**********************************************************************************************************************
-write(*,'(/,2x,a,\)') '            Enter the Energy value  : '
+
+! Note: 
+!     This code lets the user enter values twice: once numerically (for calculations) 
+!     and once as a string (for filenames or labels).  
+!     For example, `E` is a number, while `EE` stores the same value as a string.  
+!     This dual input ensures accurate calculations and meaningful file naming.
+
+!write(*,'(/,2x,a,\)') '            Enter the Energy value  : '
 !read(*,*) E
-E = 0.45       
-write(*,'(/,2x,a,\)') '                             Again  : '
+!write(*,'(/,2x,a,\)') '                             Again  : '
 !read(*,*) EE
-EE = '045'            
 
-write(*,'(/,2x,a,\)') '         Enter the frequency value  : '
+!write(*,'(/,2x,a,\)') '         Enter the frequency value  : '
 !read(*,*) freq
-freq = 4000
-write(*,'(/,2x,a,\)') '                             Again  : '
+!write(*,'(/,2x,a,\)') '                             Again  : '
 !read(*,*) freqf
-freqf = '4000'
 
-write(*,'(/,2x,a,\)') '        Enter the Number of Pulses  : '
+!write(*,'(/,2x,a,\)') '        Enter the Number of Pulses  : '
 !read(*,*) Np
-Np=1
-write(*,'(/,2x,a,\)') '                             Again  : '
+!write(*,'(/,2x,a,\)') '                             Again  : '
 !read(*,*) Npf
-Npf='1'
 
-write(*,'(/,2x,a,\)') '                      Enter the tp  : '
+!write(*,'(/,2x,a,\)') '                      Enter the tp  : '
 !read(*,*) tp
-tp = 50e-6
-write(*,'(/,2x,a,\)') '                             Again  : '
+!write(*,'(/,2x,a,\)') '                             Again  : '
 !read(*,*) tpf
+
+! For Calculation
+E = 0.45       
+freq = 4000
+Np = 1
+tp = 50e-6
+
+! For Generating Filenames based on the values above
+EE = '045'            
+freqf = '4000'
+Npf = '1'
 tpf = '50'
 
 !**********************************************************************************************************************
 !                          Determination of Filenames and Opening files
 !**********************************************************************************************************************
+
+! Note:
+!      To achieve both efficiency and clarity in managing output data,
+!      below, we generate filenames based on input information.
+
+!------------------------------------  temperature 
 
 !------------------------------------------------ Heat Equation Files
 filenameTt = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Tt.plt'
@@ -364,18 +343,8 @@ open(20,file=filenameibestl)
 !**********************************************************************************************************************
 !                                           Constants
 !**********************************************************************************************************************
-!-------------------------Optimization
-!do E=0.1,0.5,0.1
-!do freq=4000.,6000.,1000.
-!do length=0.010,0.025,0.001 
-!do omegaf=190.e-6,200.e-6,10.e-6
 
-!E=2.
-!freq=100.
-!length=0.02	
-!omegaf=100.e-6
-
-!------------------------------------------------ Common
+!----------------- The constants of Common
        pi = 4*atan(1.)                                                              !dimensionless
        Ii = (0.,1.)
 
@@ -426,7 +395,7 @@ stability = 0.5
   lambda1 = 1064.e-9             !wavelength fundamental                            !m
   lambda2 =  532.e-9             !wavelength second harmonic                        !m
 
-!------------------------------------------------ Thermal properties
+!----------------- The constants of Temperature
         h = 10.                  !heat transfer coefficient (convection - cylinder) !W/(m^2.K)
        T0 = 300.                 !initial temperature                               !K
 
@@ -436,7 +405,7 @@ stability = 0.5
 
  epsilong = 0.9                  !surface emissivity                                !dimensionless
 
-!------------------------------------------------ Phase properties
+!------------------ The constants of phase equation
       phi = 24.77*pi/180.
     theta =   90.*pi/180.
 
@@ -490,7 +459,7 @@ stability = 0.5
         ne1T0 = (2.**0.5) / sqrt( -B1T0 + sqrt( B1T0**2. - 4.*C1T0 ) ) 
         ne2T0 = (2.**0.5) / sqrt( -B2T0 + sqrt( B2T0**2. - 4.*C2T0 ) ) 
    
-!------------------------------------------------ Fields properties
+!----------------- The field equations constants
            c = 3.e8                                                                 !m/s
 
        omega = 2.*pi*c/lambda1                                                      !rad/s 
@@ -502,16 +471,16 @@ stability = 0.5
 !**********************************************************************************************************************
 !                                        Arrays Allocattion 
 !**********************************************************************************************************************
-
-!----------------------------------- Allocate Arrays Thermal
+ 
+!------------------- Allocate Array temperature
 allocate(temperature(1:2,0:nr,0:nz/kn))     
 allocate( KT(0:nr,0:nz/kn) )
 
-!----------------------------------- Allocate Arrays phase
+!------------------- Allocate Array phase
 allocate(deltaphase (0:nr,0:nz))
 allocate(phasechange(0:nt/inn,0:nr,0:nz))                     
 
-!----------------------------------- Allocate Arrys Fields
+!------------------- Allocate Array field equations
 allocate(Psi1(0:nt/inn,0:nr,1:2))                               
 allocate(Psi2(0:nt/inn,0:nr,1:2))             
 allocate(Psi3(0:nt/inn,0:nr,1:2))             
@@ -523,7 +492,8 @@ allocate(Elec3(0:nt/inn,0:nr,0:nz/kn))
 !**********************************************************************************************************************
 !                                     Giving Zero to Arrays
 !********************************************************************************************************************** 
-!----------------------------------- Giving Zero to Arrys Thermal
+  
+!------------------- Zero to Array temperature
 forall (i=1:2,j=0:nr,k=0:nz/kn)
                     temperature(i,j,k) = 0.        
 end forall !i
@@ -533,7 +503,7 @@ forall (j=0:nr,k=0:nz/kn)
                                KT(j,k) = 0.
 end forall
 
-!----------------------------------- Giving Zero to Arrys phase
+!-------------------- Zero to Array phase equation
 forall (j=0:nr,k=0:nz)
                        deltaphase(j,k) = (0.,0.)        
 end forall !i
@@ -543,7 +513,7 @@ forall (i=0:nt/inn,j=0:nr,k=0:nz)
                     phasechange(i,j,k) = (0.,0.)        
 end forall !i
 
-!----------------------------------- Giving Zero to Arrys Fields
+!--------------------- Zero to Array field equations
 forall (i=0:nt/inn,j=0:nr,k=1:2)
                            Psi1(i,j,k) = (0.,0.)       
 	  	           Psi2(i,j,k) = (0.,0.)       
@@ -559,6 +529,7 @@ end forall !i
 !**********************************************************************************************************************
 !                                       Printing Constants     
 !**********************************************************************************************************************
+
 !------------------------------------------------ Common 
 write(*,*)
 write(*,*)'------- Common Constants ---------------------------------------------------'
@@ -614,7 +585,7 @@ write(*,'(A15,F15.10,//)')  '     epsilong = ',epsilong
 write(*,'(A15,F15.10,//)')  '    stability = ',stability                                                                
 
 write(*,*)'----------------------------------------------------------------------------'
-write(*,'(A,\)')' Press Enter to continue '
+write(*,'(A,\)')' Please press any key to continue '
 read(*,*)
 
 !------------------------------------------------ For Phase Equation 
@@ -659,7 +630,7 @@ write(*,'(A15,F15.10,/ )')  '       dny2dT = ',dny2dT
 write(*,'(A15,F15.10,//)')  '       dnz2dT = ',dnz2dT          
 
 write(*,*)'----------------------------------------------------------------------------'
-write(*,'(A,\)')' Press Enter to continue '
+write(*,'(A,\)')' Please press any key to continue '
 read(*,*)
 
 !------------------------------------------------ For fields Equation 
@@ -675,7 +646,7 @@ write(*,'(A15,f25.5 ,/ )')  '        omega = ',omega
 write(*,'(A15,f25.20,//)')  '     epsilon0 = ',epsilon0           
 
 write(*,*)'----------------------------------------------------------------------------'
-write(*,'(A,\)')' Press Enter to continue '
+write(*,'(A,\)')' Please press any key to continue '
 read(*,*)
   
 !**********************************************************************************************************************
@@ -1288,7 +1259,7 @@ end do !l
 !                                        Printing Results     
 !**********************************************************************************************************************
 
-!------------------ For Heat Equation
+!------------------------------------------------For heat equation
 do j=0,nr
    
    if (j<=int(nnrom*nr)) then
@@ -1311,7 +1282,7 @@ do k=0,nz
 
 end do !k      						   
 
-!------------------ For Phase Equation
+!------------------------------------------------ For Phase Equation
 do j=0,nr
 
    if (j<=int(nnrom*nr)) then
@@ -1334,7 +1305,7 @@ do k=0,nz
 
 end do !k      						   
 
-!------------------ For Field Equations
+!------------------------------------------------ For feild equations    	
 do i=31,nt,(4*inn) 
    
    !if (mod(i,4*inn)==0) then
@@ -1531,15 +1502,19 @@ end do !i
 !                                      Closing Files and Ending the Program 
 !**********************************************************************************************************************
 
-!------------------ For Heat Equation
+!----------------- for temperature 
+
 close(1)
 close(2)
 close(3)
-!------------------ For Phase Equation
+
+!----------------- for phase equation
+
 close(4)
 close(5)
 close(6)
-!------------------ For Field Equations
+
+!----------------- for field equations
 close( 7)
 close( 8)
 close( 9)
@@ -1558,6 +1533,18 @@ close(17)
 close(18)
 close(19)
 close(20)
+
+!----------------------
+
+write(*,*) 
+write(*,*) '---- The results are stored in `.plt` format.                                  &
+	         If a different format is required, users can set the desried extension in      &
+			   "Determine Filenames & Open files" section of the code or rename the file      & 
+			   manually and open it with their preferred software. ----!'	
+
+			
+write(*,*) 	
+write(*,*) '---- Program Completed ----!'
 
 end program Coupled_G_PW                     
 
