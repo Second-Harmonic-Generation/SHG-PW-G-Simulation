@@ -1,0 +1,25 @@
+# 1) Exclude EVERYTHING from language stats by default
+* linguist-vendored
+
+# 2) Whitelist Fortran files (count these only)
+*.f    linguist-vendored=false linguist-language=Fortran
+*.for  linguist-vendored=false linguist-language=Fortran
+*.f90  linguist-vendored=false linguist-language=Fortran
+*.f95  linguist-vendored=false linguist-language=Fortran
+*.F    linguist-vendored=false linguist-language=Fortran
+*.F90  linguist-vendored=false linguist-language=Fortran
+*.F95  linguist-vendored=false linguist-language=Fortran
+
+# 3) (Optional) Keep typical non-source out of stats explicitly
+results/**  linguist-vendored
+data/**     linguist-vendored
+images/**   linguist-generated
+*.plt       linguist-vendored
+*.gp        linguist-vendored
+*.gnu       linguist-vendored
+*.md        linguist-documentation
+*.pdf       linguist-documentation
+*.o         linguist-generated
+*.mod       linguist-generated
+*.a         linguist-generated
+build/**    linguist-generated
