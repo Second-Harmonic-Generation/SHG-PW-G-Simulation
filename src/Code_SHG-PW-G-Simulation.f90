@@ -25,16 +25,16 @@ implicit none
 !--------------------------------- common variables
 integer       i            ,j          ,k          ,l                                                                &
              ,nt           ,nr         ,nz         ,Np         ,inn        ,kn                                       &
-	     ,nt1          ,run                                                                                      &
-	     ,nomegaf                                                          
+	          ,nt1          ,run                                                                                      &
+	          ,nomegaf                                                          
 
 real*8        E            ,t          ,z          ,r          ,x          ,y                                        &                                 
              ,pi           ,tp         ,y1         ,y2                                                               &
              ,freq                                                                                                   &
-	     ,timet        ,alpha      ,gama1      ,gama2      ,gama3      ,power      ,nnrom                        &   
-	     ,no1T0        ,ne1T0      ,ne2T0      ,no1rT      ,ne2rT      ,ne1rT                                    &
-	     ,omegaf       ,length     ,deltar     ,deltaz     ,deltat     ,radius                                   &  
-	     ,lambda1      ,lambda2    ,deltar1    ,deltar2                                                          & 
+	          ,timet        ,alpha      ,gama1      ,gama2      ,gama3      ,power      ,nnrom                        &   
+	          ,no1T0        ,ne1T0      ,ne2T0      ,no1rT      ,ne2rT      ,ne1rT                                    &
+	          ,omegaf       ,length     ,deltar     ,deltaz     ,deltat     ,radius                                   &  
+	          ,lambda1      ,lambda2    ,deltar1    ,deltar2                                                          & 
              ,tbetween                                                             
 
 complex*16    Ii                                                                                                       
@@ -44,36 +44,36 @@ character*35  freqf      ,Npf        ,tpf        ,EE
 !--------------------------------- temperature variables
 real*8        h                                                                                                      &  
              ,T0         ,Cp                                                                                         &
-	     ,roh        ,aa1        ,aa2        ,aa3        ,aa4        ,aa5        ,KT0                            &
+	          ,roh        ,aa1        ,aa2        ,aa3        ,aa4        ,aa5        ,KT0                            &
              ,Tinf       ,Tamb       ,Temp                                                                           & 
-	     ,sigma                                                                                                  &
-	     ,Tempmax                                                                                                &
+	          ,sigma                                                                                                  &
+	          ,Tempmax                                                                                                &
              ,epsilong                                                                                               &
-	     ,stability                                                                                              &
+	          ,stability                                                                                              &
 		 	  
-	     ,temperature[allocatable](:,:,:)    ,KT[allocatable](:,:)                                              
+	          ,temperature[allocatable](:,:,:)    ,KT[allocatable](:,:)                                              
 
 character*35  filenameTt   ,filenameTr   ,filenameTz                                                                 &
              ,filenameTempmaxl
 !--------------------------------- phase variables
 real*8        phi                                                                                                    &
              ,B1T0         ,B2T0         ,C1T0          ,C2T0         ,B1rT         ,B2rT         ,C1rT              &
-	     ,C2rT                                                                                                   &		 
+	          ,C2rT                                                                                                   &		 
              ,Phase                                                                                                  &
-	     ,aa1T0        ,bb1T0        ,cc1T0         ,nx1T0        ,ny1T0        ,nz1T0        ,Term1             &
-	     ,aa2T0        ,bb2T0        ,cc2T0         ,nx2T0        ,ny2T0        ,nz2T0        ,Term2             &
-	     ,aa1rT        ,bb1rT        ,cc1rT         ,nx1rT        ,ny1rT        ,nz1rT        ,Term3             &
-	     ,aa2rT        ,bb2rT        ,cc2rT         ,nx2rT        ,ny2rT        ,nz2rT        ,theta             &
-	     ,B1r0T        ,B2r0T        ,C1r0T         ,C2r0T                                                       &                                
+	          ,aa1T0        ,bb1T0        ,cc1T0         ,nx1T0        ,ny1T0        ,nz1T0        ,Term1             &
+	          ,aa2T0        ,bb2T0        ,cc2T0         ,nx2T0        ,ny2T0        ,nz2T0        ,Term2             &
+	          ,aa1rT        ,bb1rT        ,cc1rT         ,nx1rT        ,ny1rT        ,nz1rT        ,Term3             &
+	          ,aa2rT        ,bb2rT        ,cc2rT         ,nx2rT        ,ny2rT        ,nz2rT        ,theta             &
+	          ,B1r0T        ,B2r0T        ,C1r0T         ,C2r0T                                                       &                                
 
-	     ,aa1r0T       ,bb1r0T       ,cc1r0T        ,nx1r0T       ,ny1r0T       ,nz1r0T       ,dnx1dT            &
-	     ,aa2r0T       ,bb2r0T       ,cc2r0T        ,nx2r0T       ,ny2r0T       ,nz2r0T       ,dnx2dT            &
+	          ,aa1r0T       ,bb1r0T       ,cc1r0T        ,nx1r0T       ,ny1r0T       ,nz1r0T       ,dnx1dT            &
+	          ,aa2r0T       ,bb2r0T       ,cc2r0T        ,nx2r0T       ,ny2r0T       ,nz2r0T       ,dnx2dT            &
              ,dny1dT       ,dny2dT       ,dnz1dT        ,dnz2dT       ,no1r0T       ,ne1r0T       ,ne2r0T            &   
              
              ,Phasemin                                                                                               &
 
-	     ,deltano1rT   ,deltane1rT   ,deltane2rT                                                                 &   
-	     ,deltano1r0T  ,deltane1r0T  ,deltane2r0T                                                     
+	          ,deltano1rT   ,deltane1rT   ,deltane2rT                                                                 &   
+	          ,deltano1r0T  ,deltane1r0T  ,deltane2r0T                                                     
 
 complex*8     deltaphase[allocatable](:,:)                                                                           &
              ,phasechange[allocatable](:,:,:)
@@ -86,26 +86,26 @@ integer       f            ,ibest
 
 real*8        c                                                                                                      &
              ,fi                                                                                                     &
-	     ,deff                                                                                                   &
+	          ,deff                                                                                                   &
              ,omega        ,Psi22         ,Psi32                                                                     &
              ,Lscale       ,Elec12        ,Elec22         ,Elec32                                                    &
-	     ,epsilon0     ,Psi2max       ,Psi3max                                                                                          
+	         ,epsilon0     ,Psi2max       ,Psi3max                                                                                          
 
 complex*16    cc1          ,cc2          ,cc3           ,cc4          ,cc5                                           &
              ,dd1          ,dd2          ,dd3           ,dd4          ,dd5                                           &
              ,ee1          ,ee2          ,ee3           ,ee4          ,ee5                                           &
 
              ,Psi1[allocatable](:,:,:)   ,Elec1[allocatable](:,:,:)                                                  &
-	     ,Psi2[allocatable](:,:,:)   ,Elec2[allocatable](:,:,:)                                                  &  
-	     ,Psi3[allocatable](:,:,:)   ,Elec3[allocatable](:,:,:) 
+	          ,Psi2[allocatable](:,:,:)   ,Elec2[allocatable](:,:,:)                                                  &  
+	         ,Psi3[allocatable](:,:,:)   ,Elec3[allocatable](:,:,:) 
                      
 
 character*35  filenameibestl                                                                                         &
              ,filenameElec12t      ,filenameElec12r       ,filenameElec12z                                           &
              ,filenameElec22t      ,filenameElec22r       ,filenameElec22z                                           &         
-	     ,filenameElec32t      ,filenameElec32r       ,filenameElec32z                                           &
+	          ,filenameElec32t      ,filenameElec32r       ,filenameElec32z                                           &
              
-	     ,filenamePsi3picksl                                                                                     & 
+	          ,filenamePsi3picksl                                                                                     & 
              ,filenamePsi2picksl 
 
 !**********************************************************************************************************************
@@ -115,16 +115,16 @@ character*35  filenameibestl                                                    
 !--------------------------------- Giving Zero to common variables
               i = 0            ;j = 0            ;k = 0        ;l = 0               
              nt = 0           ;nr = 0           ;nz = 0       ;Np = 0       ;inn= 0        ;kn = 0                                                  
-	    nt1 = 0           ;run = 0                                                 
+	         nt1 = 0           ;run = 0                                                 
         nomegaf = 0
 
               E = 0.            ;t = 0.            ;z = 0.        ;r = 0.        ;x = 0.         ;y = 0.         
              pi = 0.           ;tp = 0.           ;y1 = 0.       ;y2 = 0.           
            freq = 0.                                                                                                
-	  timet = 0.        ;alpha = 0.        ;gama1 = 0.    ;gama2 = 0.    ;gama3 = 0.     ;power = 0.    ;nnrom = 0.
+	       timet = 0.        ;alpha = 0.        ;gama1 = 0.    ;gama2 = 0.    ;gama3 = 0.     ;power = 0.    ;nnrom = 0.
           no1T0 = 0.        ;ne2T0 = 0.        ;ne1T0 = 0.    ;no1rT = 0.    ;ne2rT = 0.     ;ne1rT = 0.      
-	 omegaf = 0.       ;length = 0.       ;deltar = 0.   ;deltaz = 0.   ;deltat = 0.    ;radius = 0.                                               
-	lambda1 = 0.      ;lambda2 = 0.      ;deltar1 = 0.  ;deltar2 = 0.
+	      omegaf = 0.       ;length = 0.       ;deltar = 0.   ;deltaz = 0.   ;deltat = 0.    ;radius = 0.                                               
+      	lambda1 = 0.      ;lambda2 = 0.      ;deltar1 = 0.  ;deltar2 = 0.
        tbetween = 0.                                              
 
              Ii = (0.,0.)  
@@ -132,9 +132,9 @@ character*35  filenameibestl                                                    
 !-------------------------------- Giving Zero to temperature variable
               h = 0.                                                                                                                       
              T0 = 0.           ;Cp = 0.                                                    
-	    roh = 0.          ;aa1 = 0.          ;aa2 = 0.      ;aa3 = 0.      ;aa4 = 0.      ;aa5 = 0.      ;KT0 = 0.      
+	         roh = 0.          ;aa1 = 0.          ;aa2 = 0.      ;aa3 = 0.      ;aa4 = 0.      ;aa5 = 0.      ;KT0 = 0.      
            Tinf = 0.         ;Tamb = 0.         ;Temp = 0.
-	  sigma = 0.                                                                       
+	       sigma = 0.                                                                       
         Tempmax = 0. 
        epsilong = 0.                                      
       stability = 0.   
@@ -145,14 +145,14 @@ character*35  filenameibestl                                                    
            C2rT = 0.    
           Phase = 0.			 
           aa1T0 = 0.        ;bb1T0 = 0.        ;cc1T0 = 0.    ;nx1T0 = 0.    ;ny1T0 = 0.    ;nz1T0 = 0.    ;Term1 = 0.         
-	  aa2T0 = 0.        ;bb2T0 = 0.        ;cc2T0 = 0.    ;nx2T0 = 0.    ;ny2T0 = 0.    ;nz2T0 = 0.    ;Term2 = 0.        
-	  aa1rT = 0.        ;bb1rT = 0.        ;cc1rT = 0.    ;nx1rT = 0.    ;ny1rT = 0.    ;nz1rT = 0.    ;Term3 = 0.              
+	       aa2T0 = 0.        ;bb2T0 = 0.        ;cc2T0 = 0.    ;nx2T0 = 0.    ;ny2T0 = 0.    ;nz2T0 = 0.    ;Term2 = 0.        
+	       aa1rT = 0.        ;bb1rT = 0.        ;cc1rT = 0.    ;nx1rT = 0.    ;ny1rT = 0.    ;nz1rT = 0.    ;Term3 = 0.              
           aa2rT = 0.        ;bb2rT = 0.        ;cc2rT = 0.    ;nx2rT = 0.    ;ny2rT = 0.    ;nz2rT = 0.    ;theta = 0.       
-	  B1r0T = 0.        ;B2r0T = 0.        ;C1r0T = 0.    ;C2r0T = 0.                                                                     
+	       B1r0T = 0.        ;B2r0T = 0.        ;C1r0T = 0.    ;C2r0T = 0.                                                                     
                           
             
-	 aa1r0T = 0.       ;bb1r0T = 0.       ;cc1r0T = 0.   ;nx1r0T = 0.   ;ny1r0T = 0.   ;nz1r0T = 0.   ;dnx1dT = 0.       
-	 aa2r0T = 0.       ;bb2r0T = 0.       ;cc2r0T = 0.   ;nx2r0T = 0.   ;ny2r0T = 0.   ;nz2r0T = 0.   ;dnx2dT = 0.     
+	      aa1r0T = 0.       ;bb1r0T = 0.       ;cc1r0T = 0.   ;nx1r0T = 0.   ;ny1r0T = 0.   ;nz1r0T = 0.   ;dnx1dT = 0.       
+	      aa2r0T = 0.       ;bb2r0T = 0.       ;cc2r0T = 0.   ;nx2r0T = 0.   ;ny2r0T = 0.   ;nz2r0T = 0.   ;dnx2dT = 0.     
          dny1dT = 0.       ;dny2dT = 0.       ;dnz1dT = 0.   ;dnz2dT = 0.   ;no1r0T = 0.   ;ne1r0T = 0.   ;ne2r0T = 0.    
      deltano1rT = 0.   ;deltane1rT = 0.   ;deltane2rT = 0.                                                                   
     deltano1r0T = 0.  ;deltane1r0T = 0.  ;deltane2r0T = 0.                                                    
@@ -167,8 +167,8 @@ character*35  filenameibestl                                                    
             ee1 = 0.          ;ee2 = 0.          ;ee3 = 0.      ;ee4 = 0.      ;ee5 = 0.                                          
  
            deff = 0.                                        
-	  omega = 0.        ;Psi22 = 0.        ;Psi32 = 0.
-	 Lscale = 0.       ;Elec12 = 0.       ;Elec22 = 0.   ;Elec32 = 0.  
+	       omega = 0.        ;Psi22 = 0.        ;Psi32 = 0.
+	      Lscale = 0.       ;Elec12 = 0.       ;Elec22 = 0.   ;Elec32 = 0.  
        epsilon0 = 0.      ;Psi2max = 0.      ;Psi3max = 0.
 
 !**********************************************************************************************************************
@@ -238,7 +238,7 @@ open(3,file=filenameTz)
 
 write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these files :',filenameTt  &
                                                                                     ,filenameTr  &
-																					,filenameTz
+																				                     	,filenameTz
  read(*,*)
 
 !------------------------------------------------ Phase Equation Files
@@ -256,7 +256,7 @@ open(6,file=filenamePz)
 
 write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these files :',filenamePt  &
                                                                                     ,filenamePr  &
-	             								    ,filenamePz
+	             								                                             ,filenamePz
  read(*,*)
 
 !------------------------------------------------ Field Equations Files
@@ -293,7 +293,7 @@ open(12,file=filenameElec22z)
 
 write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these files :',filenameElec22t  &
                                                                                     ,filenameElec22r  &
-										    ,filenameElec22z
+										                                                      ,filenameElec22z
  read(*,*)
 
 !------------------
@@ -311,7 +311,7 @@ open(15,file=filenameElec32z)
 
 write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these files :',filenameElec32t  &
                                                                                     ,filenameElec32r  &
-										    ,filenameElec32z
+										                                                      ,filenameElec32z
  read(*,*)
 
 !------------------
@@ -361,7 +361,7 @@ open(20,file=filenameibestl)
 
        nr = 120
    radius = 0.002                !radius of crystal                                 !m
-   omegaf = 80.e-6              !spot size                                         !m
+   omegaf = 80.e-6              !spot size                                          !m
   nomegaf = 5 
     nnrom = 4./5.
   !deltar = omegaf/10.                                                              !m
@@ -378,7 +378,7 @@ open(20,file=filenameibestl)
 
 stability = 0.5
    deltat = stability * ( (roh*Cp)/(2.*KT0) ) * ( (deltar1**2.*deltaz**2.)/(deltar1**2.+deltaz**2.) ) !s   
-      nt1 = int(tbetween/deltat)                                                         !dimensionless 
+      nt1 = int(tbetween/deltat)                                                    !dimensionless 
        inn= int(nt1/80)
        nt = nt1 - mod(nt1,inn)
 
@@ -437,7 +437,7 @@ stability = 0.5
         Term2 = sin(theta)**2. * sin(phi)**2.
         Term3 = cos(theta)**2.
 
-         B1T0 = -Term1 * ( bb1T0 + cc1T0 )       &
+         B1T0 = -Term1 * ( bb1T0 + cc1T0 )  &
 	        -Term2 * ( aa1T0 + cc1T0 )       &
                 -Term3 * ( aa1T0 + bb1T0 ) 
      		 
@@ -728,12 +728,12 @@ do l=1,Np
 
 	       Psi1(i/inn,0 ,1 ) = Psi1(i/inn,1,1 )                                                 !for crystal axis
            
-               Psi1(i/inn,nr,1 ) = (0.,0.)                                                          !for lateral surface 
+               Psi1(i/inn,nr,1 ) = (0.,0.)                                                     !for lateral surface 
 			
 
 	       if (k==0 ) Psi1(i/inn,0 ,1 ) = Psi1(i/inn,1,1 )                                      !for (0 ,0 )
            
-   	       if (k==0 ) Psi1(i/inn,nr,1 ) = (0.,0.)                                               !for (nr,0 ) 
+   	       if (k==0 ) Psi1(i/inn,nr,1 ) = (0.,0.)                                            !for (nr,0 ) 
 
 	       if (k==nz) Psi1(i/inn,nr,1 ) = (0.,0.)                                               !for (nr,nz) 
 
@@ -744,18 +744,18 @@ do l=1,Np
 
 	       Psi2(i/inn,0 ,1 ) = Psi2(i/inn,1,1 )                                                 !for crystal axis
            
-               Psi2(i/inn,nr,1 ) = (0.,0.)                                                          !for lateral surface 
+               Psi2(i/inn,nr,1 ) = (0.,0.)                                                     !for lateral surface 
           
 	       if (k==0 ) Psi2(i/inn,0 ,1 ) = Psi2(i/inn,1,1 )                                      !for (0 ,0 )
            
 	       if (k==0 ) Psi2(i/inn,nr,1 ) = (0.,0.)                                               !for (nr,0 ) 
 
-               if (k==nz) Psi2(i/inn,nr,1) = (0.,0.)                                                !for (nr,nz) 
+               if (k==nz) Psi2(i/inn,nr,1) = (0.,0.)                                           !for (nr,nz) 
 
 	       if (k==nz) Psi2(i/inn,0 ,1) = Psi2(i/inn,1 ,1)                                       !for (0 ,nz) 
 
  	       !------------- Psi3 
-               if (k==0)Psi3(i/inn,j,1) = (0.,0.)                                                   !for innput  surface
+               if (k==0)Psi3(i/inn,j,1) = (0.,0.)                                              !for innput  surface
             
 	       Psi3(i/inn,0  ,1) = Psi3(i/inn,1,1)                                                  !for crystal axis
 					      
@@ -773,20 +773,20 @@ do l=1,Np
            
                !--------------------------------- Field Equations		   
 	       !-------------
-	       Psi1(i/inn,j,2) =  Psi1(i/inn,j,1)                                                                     &
+	       Psi1(i/inn,j,2) =  Psi1(i/inn,j,1)                                                                &
 			
 		               - cc1  * ( Psi1(i/inn,j,1) - Psi1(i/inn-1,j,1) ) / deltat                              &
 			
 		               + cc2  * ( Psi1(i/inn,j+1,1) - Psi1(i/inn,j-1,1) ) / (2*r*deltar)                      &
 														
-		    	       + cc2  * ( Psi1(i/inn,j+1,1) - 2*Psi1(i/inn,j,1) + Psi1(i/inn,j-1,1) ) / deltar**2     &
+		    	       + cc2  * ( Psi1(i/inn,j+1,1) - 2*Psi1(i/inn,j,1) + Psi1(i/inn,j-1,1) ) / deltar**2       &
 														
-			       - cc3  *   Psi1(i/inn,j,1)                                                             &
+			       - cc3  *   Psi1(i/inn,j,1)                                                                  &
 
 			       + cc4  * conjg(Psi2(i/inn,j,1)) * Psi3(i/inn,j,1) * exp(-Ii*phasechange(i/inn,j,k) )   
 
  	       !-------------
-	       Psi2(i/inn,j,2) =  Psi2(i/inn,j,1)                                                                     &
+	       Psi2(i/inn,j,2) =  Psi2(i/inn,j,1)                                                                &
 		
 		               - dd1 * ( Psi2(i/inn,j,1) - Psi2(i/inn-1,j,1) ) / deltat                               &
 			
@@ -799,7 +799,7 @@ do l=1,Np
 		               + dd4 * conjg(Psi1(i/inn,j,1)) * Psi3(i/inn,j,1) * exp(-Ii*phasechange(i/inn,j,k) )     
  
                !-------------			
-	       Psi3(i/inn,j,2) =  Psi3(i/inn,j,1)                                                                     &
+	       Psi3(i/inn,j,2) =  Psi3(i/inn,j,1)                                                                &
 		
 		               - ee1 * ( Psi3(i/inn,j,1) - Psi3(i/inn-1,j,1) ) / deltat                               &
 			
@@ -807,7 +807,7 @@ do l=1,Np
 														
 		               + ee2 * ( Psi3(i/inn,j+1,1) - 2*Psi3(i/inn,j,1) + Psi3(i/inn,j-1,1) ) / deltar**2      &
 														
-			       - ee3 *   Psi3(i/inn,j,1)                                                              &
+			       - ee3 *   Psi3(i/inn,j,1)                                                                   &
 														
 			       + ee4 *   Psi1(i/inn,j,1) * Psi2(i/inn,j,1) * exp(Ii*phasechange(i/inn,j,k) )          
 
@@ -840,9 +840,9 @@ do l=1,Np
 	          !------------- Elec1
                   if (k==0) Elec1(i/inn,j,0) = Psi1(i/inn,j,1)       !for input  surface
  
-	          Elec1(i/inn,0 ,k/kn ) = Psi1(i/inn,0,1)            !for crystal axis
+	          Elec1(i/inn,0 ,k/kn ) = Psi1(i/inn,0,1)                 !for crystal axis
            
-	          Elec1(i/inn,nr,k/kn ) = (0.,0.)                    !for lateral surface 
+	          Elec1(i/inn,nr,k/kn ) = (0.,0.)                         !for lateral surface 
 
                   if (k==0) Elec1(i/inn,0,0) = Psi1(i/inn,0,1)       !for (0 ,0 )
            
@@ -855,9 +855,9 @@ do l=1,Np
 	          !------------- Elec2
                   if (k==0) Elec2(i/inn,j,0) = Psi2(i/inn,j,1)       !for input  surface
  
-	          Elec2(i/inn,0 ,k/kn ) = Psi2(i/inn,0,1)            !for crystal axis
+	          Elec2(i/inn,0 ,k/kn ) = Psi2(i/inn,0,1)                 !for crystal axis
            
-	          Elec2(i/inn,nr,k/kn ) = (0.,0.)                    !for lateral surface 
+	          Elec2(i/inn,nr,k/kn ) = (0.,0.)                         !for lateral surface 
 
                   if (k==0) Elec2(i/inn,0,0) = Psi2(i/inn,0,1)       !for (0 ,0 )
            
@@ -870,9 +870,9 @@ do l=1,Np
 	          !------------- Elec3 
                   Elec3(i/inn,j,0) = (0.,0.)                         !for input  surface
  
-	          Elec3(i/inn,0 ,k/kn ) = Psi3(i/inn,1,1)            !for crystal axis
+	          Elec3(i/inn,0 ,k/kn ) = Psi3(i/inn,1,1)                 !for crystal axis
            
-	          Elec3(i/inn,nr,k/kn ) = (0.,0.)                    !for lateral surface 
+	          Elec3(i/inn,nr,k/kn ) = (0.,0.)                         !for lateral surface 
 
                   Elec3(i/inn,0,0) = (0.,0.)                         !for (0 ,0 )
            
@@ -984,13 +984,13 @@ do l=1,Np
 	          !------------------------------------ End of Boundary conditions
            
                   !------------------------------------ Heat Equation
-	          temperature(2,j,k/kn) =                                                                             &
+	          temperature(2,j,k/kn) =                                                                        &
 			   
 		         + temperature(1,j,k/kn)                                                                      &
 		                        
 		         + aa3 * ( ( temperature(1,j+1,k/kn) -  temperature(1,j-1,k/kn) ) / (2*r*deltar)              &
 								 
-			          +( temperature(1,j+1,k/kn) -2*temperature(1,j,k/kn) + temperature(1,j-1,k/kn) )     &
+			          +( temperature(1,j+1,k/kn) -2*temperature(1,j,k/kn) + temperature(1,j-1,k/kn) )          &
 
                                      / (deltar**2)                                                                    & 
 
@@ -998,17 +998,17 @@ do l=1,Np
 
                                      / (deltaz**2) )                                                                  & 
 
-                         + aa4 * (    gama1 * Elec1(i/inn,j,k/kn)*conjg(Elec1(i/inn,j,k/kn))                            &
+                         + aa4 * (    gama1 * Elec1(i/inn,j,k/kn)*conjg(Elec1(i/inn,j,k/kn))                          &
 									         
-		                  +   gama2 * Elec2(i/inn,j,k/kn)*conjg(Elec2(i/inn,j,k/kn))                            &
+		                  +   gama2 * Elec2(i/inn,j,k/kn)*conjg(Elec2(i/inn,j,k/kn))                                    &
 											 
-			          + 2*gama3 * Elec3(i/inn,j,k/kn)*conjg(Elec3(i/inn,j,k/kn)) )                          &
+			          + 2*gama3 * Elec3(i/inn,j,k/kn)*conjg(Elec3(i/inn,j,k/kn)) )                                       &
 
                          + aa5 * ( ( kT(j+1,k/kn)-kT(j-1,k/kn) ) * (temperature(1,j+1,k/kn)-temperature(1,j-1,k/kn) ) &
 			                         
-			             / (4*deltar**2)                                                                  &
+			             / (4*deltar**2)                                                                                 &
 
-			          +( kT(j,k/kn+1)-kT(j,k/kn-1) ) * (temperature(1,j,k/kn+1)-temperature(1,j,k/kn-1))  &
+			          +( kT(j,k/kn+1)-kT(j,k/kn-1) ) * (temperature(1,j,k/kn+1)-temperature(1,j,k/kn-1))                 &
 						   
 			             / (4*deltaz**2) )
 
@@ -1040,19 +1040,19 @@ do l=1,Np
                       bb2r0T = 1. / ( ny2r0T )**2 
                       cc2r0T = 1. / ( nz2r0T )**2       
 
-		       B1r0T = -Term1 * ( bb1r0T + cc1r0T )                           &
+		       B1r0T = -Term1 * ( bb1r0T + cc1r0T )                      &
 			       -Term2 * ( aa1r0T + cc1r0T )                           &
 			       -Term3 * ( aa1r0T + bb1r0T ) 
      		 
-		       C1r0T =  Term1 * bb1r0T * cc1r0T                               &
+		       C1r0T =  Term1 * bb1r0T * cc1r0T                          &
 			       +Term2 * aa1r0T * cc1r0T                               &
 		               +Term3 * aa1r0T * bb1r0T 
 
-                       B2r0T = -Term1 * ( bb2r0T + cc2r0T )                           &
+                       B2r0T = -Term1 * ( bb2r0T + cc2r0T )            &
 			       -Term2 * ( aa2r0T + cc2r0T )                           &
 			       -Term3 * ( aa2r0T + bb2r0T )
              
-		       C2r0T =  Term1 * bb2r0T * cc2r0T                               &
+		       C2r0T =  Term1 * bb2r0T * cc2r0T                          &
 			       +Term2 * aa2r0T * cc2r0T                               &
 			       +Term3 * aa2r0T * bb2r0T 
 
@@ -1082,19 +1082,19 @@ do l=1,Np
                        bb2rT = 1. / ( ny2rT )**2 
                        cc2rT = 1. / ( nz2rT )**2       
 
-	                B1rT = -Term1 * ( bb1rT + cc1rT )                             &
+	                B1rT = -Term1 * ( bb1rT + cc1rT )                   &
 			       -Term2 * ( aa1rT + cc1rT )                             &
 			       -Term3 * ( aa1rT + bb1rT ) 
      		 
-		        C1rT =  Term1 * bb1rT * cc1rT                                 &
+		        C1rT =  Term1 * bb1rT * cc1rT                            &
 			       +Term2 * aa1rT * cc1rT                                 &
 			       +Term3 * aa1rT * bb1rT 
 
-                        B2rT = -Term1 * ( bb2rT + cc2rT )                             &
+                        B2rT = -Term1 * ( bb2rT + cc2rT )              &
 			       -Term2 * ( aa2rT + cc2rT )                             &
 		               -Term3 * ( aa2rT + bb2rT )
              
-		        C2rT =  Term1 * bb2rT * cc2rT                                 &
+		        C2rT =  Term1 * bb2rT * cc2rT                            &
 			       +Term2 * aa2rT * cc2rT                                 &
 			       +Term3 * aa2rT * bb2rT 
 
@@ -1110,16 +1110,16 @@ do l=1,Np
                end if			
                
                !------------------------------------ For Phase Equation
-               deltaphase(j ,0 ) = (0.,0.)                                                    !for input surface
+               deltaphase(j ,0 ) = (0.,0.)                                               !for input surface
             
-               deltaphase(nr,k ) = (0.,0.)                                                    !for lateral surface
+               deltaphase(nr,k ) = (0.,0.)                                               !for lateral surface
 
 	       deltaphase(j ,nz) = deltaphase(j,nz-1)                                 &       !for output surface
-				  + ( 2*pi*deltaz / lambda1 )                         &
+				  + ( 2*pi*deltaz / lambda1 )                                        &
 	                          * ( deltano1rT + deltane1rT - 2*deltane2rT )                      
 
                !------
-               deltaphase(nr,0 ) = (0.,0.)                                                    !for (nr,0 )
+               deltaphase(nr,0 ) = (0.,0.)                                               !for (nr,0 )
 
 	       deltaphase(nr,nz) = (0.,0.)                                                    !for (nr,nz)
 
@@ -1127,17 +1127,17 @@ do l=1,Np
 
 	       !------
 	       deltaphase(0 ,k ) = deltaphase(0,k-1)                                  &       !for crystal axis
-				  + ( 2*pi*deltaz / lambda1 )                         &
+				  + ( 2*pi*deltaz / lambda1 )                                        &
 				  * ( deltano1r0T  + deltane1r0T  - 2*deltane2r0T  )                                            
 
 
 	       deltaphase(0 ,nz) = deltaphase(0,nz-1)                                 &       !for ( 0,nz)
-				  + ( 2*pi*deltaz / lambda1 )                         &
+				  + ( 2*pi*deltaz / lambda1 )                                        &
 			          * ( deltano1rT + deltane1rT - 2*deltane2rT )                     
         
                !----------------------------------- Phase Equation
 	       deltaphase(j,k ) = deltaphase(j,k-1)                                   &
-				 + ( 2*pi*deltaz / lambda1 )                          &  
+				 + ( 2*pi*deltaz / lambda1 )                                         &  
 				 * ( deltano1rT + deltane1rT  - 2*deltane2rT  )                                 
 
                !------------- Minimom 
