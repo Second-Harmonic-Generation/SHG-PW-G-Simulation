@@ -224,15 +224,15 @@ tpf = '50'
 !------------------------------------  temperature 
 
 !------------------------------------------------ Heat Equation Files
-filenameTt = 'T_t.plt'
+filenameTt = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Tt.plt'
 open(1,file=filenameTt)
 !write(1,'(/,a,/)')    ' variables=         "t"                             "temperature"'
 
-filenameTr = 'T_r.plt'
+filenameTr = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Tr.plt'
 open(2,file=filenameTr)
 !write(2,'(/,a,/)')    ' variables=         "r"                             "temperature"'
 
-filenameTz = 'T_z.plt'
+filenameTz = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Tz.plt'
 open(3,file=filenameTz)
 !write(3,'(/,a,/)')    ' variables=         "z"                             "temperature"' 
 
@@ -242,15 +242,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------------------------------------ Phase Equation Files
-filenamePt = 'p_t.plt'
+filenamePt = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Pt.plt'
 open(4,file=filenamePt)
 !write(4,'(/,a,/)')    ' variables=         "t"          "deltaphase_real"      "deltaphase_imaginary"'
 
-filenamePr = 'p_r.plt'
+filenamePr = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Pr.plt'
 open(5,file=filenamePr)
 !write(5,'(/,a,/)')    ' variables=         "r"          "deltaphase_real"      "deltaphase_imaginary"'
 
-filenamePz = 'p_z.plt'
+filenamePz = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Pz.plt'
 open(6,file=filenamePz)
 !write(6,'(/,a,/)')    ' variables=         "z"           "deltaphase_real"      "deltaphase_imaginary"'
 
@@ -260,15 +260,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------------------------------------ Field Equations Files
-filenameElec12t = 'Psi_12_p_t.plt'
+filenameElec12t = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec12t.plt'
 open(7,file=filenameElec12t)
 !write(7,'(/,a,/)')    ' variables =     "t"                              "Elec1 ** 2"'
 
-filenameElec12r = 'Psi_12_p_r.plt'
+filenameElec12r = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec12r.plt'
 open(8,file=filenameElec12r)
 !write(8,'(/,a,/)')    ' variables =     "r"                              "Elec1 ** 2"'
 
-filenameElec12z = 'Psi_12_p_z.plt'
+filenameElec12z = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec12z.plt'
 open(9,file=filenameElec12z)
 !write(9,'(/,a,/)')    ' variables =     "z"                              "Elec1 ** 2"'
 
@@ -279,15 +279,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------
-filenameElec22t = 'Psi_22_p_t.plt'
+filenameElec22t = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec22t.plt'
 open(10,file=filenameElec22t)
 !write(10,'(/,a,/)')    ' variables =     "t"                              "Elec2 ** 2"'
 
-filenameElec22r = 'Psi_22_p_r.plt'
+filenameElec22r = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec22r.plt'
 open(11,file=filenameElec22r)
 !write(11,'(/,a,/)')    ' variables =     "r"                              "Elec2 ** 2"'
 
-filenameElec22z = 'Psi_22_p_z.plt'
+filenameElec22z = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec22z.plt'
 open(12,file=filenameElec22z)
 !write(12,'(/,a,/)')    ' variables =     "z"                              "Elec2 ** 2"'
 
@@ -297,15 +297,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------
-filenameElec32t = 'Psi_32_p_t.plt'
+filenameElec32t = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec32t.plt'
 open(13,file=filenameElec32t)
 !write(13,'(/,a,/)')    ' variables =     "t"                              "Elec3 ** 2"'
 
-filenameElec32r = 'Psi_32_p_r.plt'
+filenameElec32r = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec32r.plt'
 open(14,file=filenameElec32r)
 !write(14,'(/,a,/)')    ' variables =     "r"                              "Elec3 ** 2"'
 
-filenameElec32z = 'Psi_32_p_z.plt'
+filenameElec32z = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Elec32z.plt'
 open(15,file=filenameElec32z)
 !write(15,'(/,a,/)')    ' variables =     "z"                              "Elec3 ** 2"'
 
@@ -315,27 +315,27 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------
-filenamePsi3picksl = 'Psi3picks_l.plt'
+filenamePsi3picksl = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Psi3picks_l.plt'
 open(16,file=filenamePsi3picksl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "Psi3 picks ** 2"'
 
 !------------------
-filenamePsi2picksl = 'Psi2picks_l.plt'
+filenamePsi2picksl = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Psi2picks_l.plt'
 open(17,file=filenamePsi2picksl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "Psi2 picks ** 2"'
 
 !------------------
-filenameTempmaxl = 'Tempmax_l.plt'
+filenameTempmaxl = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Tempmax_l.plt'
 open(18,file=filenameTempmaxl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "Tempmax"'
 
 !------------------
-filenamePhaseminl= 'Phasemin_l.plt'
+filenamePhaseminl= 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_Phasemin_l.plt'
 open(19,file=filenamePhaseminl)
 !write(18,'(/,a,/)')    ' variables =     "l"                              "Phasemin"'
 
 !------------------
-filenameibestl = 'ibest_l.plt'
+filenameibestl = 'E'//trim(EE)//'_f'//trim(freqf)//'_Np'//trim(Npf)//'_tp'//trim(tpf)//'_ibest_l.plt'
 open(20,file=filenameibestl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "ibest ** 2"'
 
