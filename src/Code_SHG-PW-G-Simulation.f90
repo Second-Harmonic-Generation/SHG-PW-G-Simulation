@@ -297,15 +297,15 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------
-filenameElec32t = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec32t.plt'
+filenameElec32t = 'Psi_32_p_t.plt'
 open(13,file=filenameElec32t)
 !write(13,'(/,a,/)')    ' variables =     "t"                              "Elec3 ** 2"'
 
-filenameElec32r = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec32r.plt'
+filenameElec32r = 'Psi_32_p_r.plt'
 open(14,file=filenameElec32r)
 !write(14,'(/,a,/)')    ' variables =     "r"                              "Elec3 ** 2"'
 
-filenameElec32z = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Elec32z.plt'
+filenameElec32z = 'Psi_32_p_z.plt'
 open(15,file=filenameElec32z)
 !write(15,'(/,a,/)')    ' variables =     "z"                              "Elec3 ** 2"'
 
@@ -315,27 +315,27 @@ write(*,'(2/,a,/,40x,a,/,40x,a,/,40x,a,/)')' Results will be saved in these file
  read(*,*)
 
 !------------------
-filenamePsi3picksl = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Psi3picks l.plt'
+filenamePsi3picksl = 'Psi3picks_l.plt'
 open(16,file=filenamePsi3picksl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "Psi3 picks ** 2"'
 
 !------------------
-filenamePsi2picksl = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Psi2picks l.plt'
+filenamePsi2picksl = 'Psi2picks_l.plt'
 open(17,file=filenamePsi2picksl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "Psi2 picks ** 2"'
 
 !------------------
-filenameTempmaxl = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Tempmax l.plt'
+filenameTempmaxl = 'Tempmax_l.plt'
 open(18,file=filenameTempmaxl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "Tempmax"'
 
 !------------------
-filenamePhaseminl= 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' Phasemin l.plt'
+filenamePhaseminl= 'Phasemin_l.plt'
 open(19,file=filenamePhaseminl)
 !write(18,'(/,a,/)')    ' variables =     "l"                              "Phasemin"'
 
 !------------------
-filenameibestl = 'E'//trim(EE)//' f'//trim(freqf)//' Np'//trim(Npf)//' tp'//trim(tpf)//' ibest l.plt'
+filenameibestl = 'ibest_l.plt'
 open(20,file=filenameibestl)
 !write(16,'(/,a,/)')    ' variables =     "l"                              "ibest ** 2"'
 
